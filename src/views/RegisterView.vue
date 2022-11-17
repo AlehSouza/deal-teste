@@ -1,8 +1,8 @@
 <!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
   <div class="about">
-    <h1>Cadastro de Usuário</h1>
     <form>
+      <h1>Cadastro de Usuário</h1>
       <label z for="nome"> Nome </label>
       <input v-model="user.nome" required id="nome" type="text" placeholder="john doe"/>
       <label for="sobrenome"> Sobrenome </label>
@@ -61,20 +61,62 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+  .about {
+    height: 84vh;
+    color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, #020024 0%, #090979 35%, rgba(0,212,255,1) 100%);
+    padding: 40px;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+  }
   form {
+    background-color: white;
+    color: black;
+    padding: 24px;
+    border-radius: 5px;
     margin: 0 auto;
-    max-width: 500px;
+    width: 430px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     flex-direction: column;
     display: flex;
   }
   label {
+    width: 100%;
     padding: 8px;
+    padding-left: 0px;
+    font-weight: bold;
+    text-align: left;
   }
   input {
     padding: 8px;
+    border: 1px solid #999999;
+    border-radius: 2px;
   }
   button {
-    padding: 8px;
+    box-shadow:inset 0px -3px 7px 0px #29bbff;
+    background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+    background-color:#2dabf9;
+    border-radius:3px;
+    border:1px solid black;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    padding:12px 23px;
+    margin: 20px 0px 20px 0px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #263666;
+    &:hover {
+      background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+      background-color:#0688fa;
+    }
+    &:active {
+      position:relative;
+      top:1px;
+    }
   }
 </style>
