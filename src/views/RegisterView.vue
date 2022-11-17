@@ -2,7 +2,7 @@
 <template>
   <div class="about">
     <form>
-      <h1>Cadastro de Usuário</h1>
+      <h1>Cadastro de Usuários</h1>
       <label z for="nome"> Nome </label>
       <input v-model="user.nome" required id="nome" type="text" placeholder="john doe"/>
       <label for="sobrenome"> Sobrenome </label>
@@ -12,7 +12,7 @@
         v-model="user.data_nascimento"
         required id="data_nascimento"
         type="date"
-        placeholder="01/01/01"
+        placeholder="dd-mm-yyyy"
       />
       <label for="email"> Email </label>
       <input
@@ -22,7 +22,11 @@
         placeholder="john.doe@example.com"
       />
       <label for="sexo"> Sexo </label>
-      <input v-model="user.sexo" required id="sexo" type="text" placeholder="john doe"/>
+      <select v-model="user.sexo" name="" id="" required>
+        <option value="" selected disabled hidden>Selecione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
       <br>
       <button type="button" @click="postUser" >Cadastrar</button>
     </form>
@@ -51,11 +55,10 @@ export default {
         data_nascimento: this.user.data_nascimento,
         email: this.user.email,
         sexo: this.user.sexo,
-      }).then((response) => {
-        console.log(response);
-        alert('Cadastrado');
+      }).then(() => {
+        alert('Cadastrado com sucesso');
       }).catch((err) => {
-        alert(`Verifique os campos, erro${err}`);
+        alert(`Verifique os campos, erro: ${err}`);
       });
     },
   },
@@ -65,8 +68,7 @@ export default {
   .about {
     height: 84vh;
     color: white;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, #020024 0%, #090979 35%, rgba(0,212,255,1) 100%);
+    background-color: #35a9e7;
     padding: 40px;
     flex-direction: column;
     align-items: center;
@@ -94,6 +96,12 @@ export default {
     padding: 8px;
     border: 1px solid #999999;
     border-radius: 2px;
+  }
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #999999;
+    cursor: pointer;
   }
   button {
     box-shadow:inset 0px -3px 7px 0px #29bbff;

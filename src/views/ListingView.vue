@@ -1,30 +1,40 @@
 <template>
   <div class="home">
-    <UsersComponent v-for="(user, i) in users" v-bind:key="i" :user="user"/>
+    <h1>Listagem de Usuários</h1>
+    <br>
+    <UsersTable :users="users"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import UsersComponent from '@/components/UsersComponent.vue';
+import UsersTable from '@/components/UsersTable.vue';
 
 import axios from 'axios';
 
 export default {
   name: 'HomeView',
   components: {
-    UsersComponent,
+    UsersTable,
   },
   data() {
     return {
-      users: [],
+      // Usuário default pra exemplo
+      users: [
+        {
+          nome: 'Usuario',
+          sobrenome: 'Teste',
+          data_nascimento: '01/01/2001',
+          email: 'usuario.teste@email.com',
+          sexo: 'M',
+        },
+      ],
     };
   },
   methods: {
     getUsers() {
       axios.get('http://192.168.0.126:8085/api/usuarios').then((resp) => {
         this.users = resp.data.usuarios;
-        console.log(this.users);
       });
     },
   },
@@ -36,5 +46,8 @@ export default {
 <style scoped>
   .home {
     padding: 80px;
+    height: 84vh;
+    color: white;
+    background-color: #35a9e7;
   }
 </style>
